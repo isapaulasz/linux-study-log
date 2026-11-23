@@ -1,0 +1,21 @@
+# Seção 28 - Agendamento de tarefas
+
+- O agendamento de tarefas no Linux é feito pelo cron, configurado no arquivo `/etc/crontab`
+- `cat /etc/crontab`: exibe o arquivo
+- `PATH`: define o caminho (diretórios) onde o cron procura os executáveis
+- Abaixo há uma tabela com a data e a hora em que o comando será executado
+- Formato de cada linha: `minuto hora dia-do-mês mês dia-da-semana usuário comando`
+  - minuto: de 0 a 59
+  - hora: de 0 a 23
+  - dia do mês: de 1 a 31
+  - mês: de 1 a 12
+  - dia da semana: de 0 a 7 (0 e 7 são domingo)
+  - `*`: representa qualquer valor
+  - `*/5`: representa "a cada 5" (por exemplo, a cada 5 minutos)
+- `man 5 crontab`: comando ideal para entender o `crontab`
+- `sudo nvim /etc/crontab`: edita o arquivo (exige privilégios de administrador)
+- Exemplo de agendamento:
+  - `0 20 * * * root backup`: executa o comando `backup`, como root, todos os dias às 20h
+  - o comando deve ser informado com o caminho completo caso não esteja nos diretórios do `PATH`
+- `crontab -e`: edita o agendamento do usuário atual, que não tem o campo de usuário nas linhas
+- `crontab -l`: lista os agendamentos do usuário atual

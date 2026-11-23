@@ -1,0 +1,22 @@
+# Seção 22 - Des/compactadores e des/empacotadores
+
+- `zip`: empacota e compacta ao mesmo tempo
+- O Linux possui compactadores como `gzip`, `bzip2` e `xz`
+- Porém, esses compactadores trabalham com um único arquivo, sendo necessário primeiro empacotar para depois compactar, o que é uma prática antiga
+- Para isso podemos usar o `tar` (tape archive), que concatena todos os arquivos em um só arquivo, para depois compactar
+  - `tar -cvf nomearquivo.tar arquivo1 arquivo2 diretorio/`: cria o pacote
+  - `tar --create --verbose --file nomearquivo.tar arquivos`: equivale a `tar -cvf nomearquivo.tar arquivos`
+- Em seguida é possível usar os compactadores
+  - `-k`: mantém o arquivo `.tar` original e compacta em um novo arquivo
+  - `-v`: exibe na tela o que ocorre
+  - `xz -kvz nomearquivo`: compacta com o `xz`, mantendo o arquivo original
+  - `-z`: compacta
+- `gunzip`: descompacta arquivos `.gz`
+- `du -sh *`: mostra o tamanho de cada item do diretório, útil para comparar os tamanhos antes e depois da compactação
+- A combinação dessas ferramentas (`tar` + `xz`, por exemplo) geralmente permite uma compactação melhor que o `zip`
+- `tar -xzvf nomearquivo.tar.gz`: descompacta (e desempacota) um arquivo `.tar.gz`
+  - `-x`: extrai
+  - `-z`: descompacta com gzip
+  - `-v`: exibe na tela o que ocorre
+  - `-f`: indica o arquivo
+- `tar -czvf nomearquivo.tar.gz diretorio/`: empacota e compacta com gzip em um só comando

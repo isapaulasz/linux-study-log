@@ -1,0 +1,23 @@
+# Seção 14 - Comandos conjuntos com operadores
+
+- `;`: permite a execução de diversos comandos em uma única linha, independente do resultado de cada um
+  - exemplo: `pwd ; ls`
+  - isso executa `pwd` e logo em seguida `ls`
+- `&&`: permite executar diversos comandos em uma linha, porém com a condição de que o comando anterior tenha sucesso na execução
+  - exemplo: `pwd && ls`
+  - isso executa `pwd` e, se `pwd` for executado com sucesso, logo em seguida será executado o `ls`
+  - exemplo: `pw && ls`
+  - o `ls` não é executado, pois `pw` não é um comando real e não pode ser executado (o terminal exibe um erro de comando não encontrado)
+- `||`: executa o primeiro comando e, caso não dê certo, o comando seguinte será executado
+  - exemplo: `pw || ls`
+  - como `pw` não existe, `ls` é executado
+  - exemplo: `pwd || ls`
+  - caso `pwd` seja executado corretamente, `ls` não será executado
+- `&`: permite executar um comando em plano de fundo, deixando o terminal livre para outros comandos
+- `jobs`: permite ver o que está sendo executado em plano de fundo
+  - `fg %1` (ou o número do programa em execução): traz um programa do plano de fundo para a frente, ocupando o terminal
+  - `bg %1`: retoma em plano de fundo um programa que estava pausado
+  - `Ctrl + Z`: pausa a execução
+  - `kill %1` (ou o número do programa em execução): encerra a execução
+- `|`: envia a saída de um comando para a entrada de outro comando (pipe)
+  - `lspci | grep VGA`: envia o retorno do `lspci` para o `grep`, que irá filtrar e retornar somente a linha que contém VGA
